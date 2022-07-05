@@ -396,10 +396,20 @@ def update_maven():
         if artifact.version == 'latest':
             artifact.version = artifact.get_latest_version()
 
-    artifact_dirs = [fetch_maven_artifact(artifact) for artifact in artifacts]
-    if not transform_maven_repos([repo for repo in maven_repos], current_path, extract_res=False):
+    currents = detect_artifacts(['current'])
+
+    need_updates = [artifact for artifact in artifacts \
+        if artifact.key not in currents or artifact.version != str(currents[artifact.key].version)]
+
+    if not need_updates:
+        print_e('No any artifacts need to update')
         return []
-    return [(artifact.key, artifact.repo_id) for artifact in artifacts]
+
+    artifact_dirs = [fetch_maven_artifact(artifact) for artifact in need_updates]
+    if not transform_maven_repos([repo for repo in maven_repos] + ['current'], current_path, extract_res=False):
+        return []
+
+    return need_updates
 
 
 def append(text, more_text):
@@ -436,8 +446,8 @@ try:
 
     updated_artifacts = update_maven()
     if updated_artifacts:
-        for component, repo_id in updated_artifacts:
-            msg += "Import %s from %s\n" % (component, maven_repos[repo_id]['name'])
+        for artifact in updated_artifacts:
+            msg += "Import %s %s from %s\n" % (artifact.key, artifact.version, maven_repos[artifact.repo_id]['name'])
     else:
         print_e('Failed to update artifacts, aborting...')
         sys.exit(1)
