@@ -193,7 +193,7 @@ def detect_artifacts(maven_repo_dirs):
     return maven_lib_info
 
 
-def transform_maven_repos(maven_repo_dirs, transformed_dir, extract_res=True, include_static_deps=True):
+def transform_maven_repos(maven_repo_dirs, transformed_dir, additional_artifacts = None, extract_res=True, include_static_deps=True):
     cwd = os.getcwd()
 
     # Use a temporary working directory.
@@ -203,6 +203,10 @@ def transform_maven_repos(maven_repo_dirs, transformed_dir, extract_res=True, in
     if not maven_lib_info:
         print_e('Failed to detect artifacts')
         return False
+
+    for key, value in additional_artifacts.items():
+        if key not in maven_lib_info:
+            maven_lib_info[key] = value
 
     # extract some files (for example, AndroidManifest.xml) from any relevant artifacts
     for info in maven_lib_info.values():
@@ -408,7 +412,7 @@ def update_maven():
         return []
 
     artifact_dirs = [fetch_maven_artifact(artifact) for artifact in need_updates]
-    if not transform_maven_repos([repo for repo in maven_repos] + ['current'], current_path, extract_res=False):
+    if not transform_maven_repos([repo for repo in maven_repos], current_path, currents, extract_res=False):
         return []
 
     return need_updates
