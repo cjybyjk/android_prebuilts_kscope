@@ -34,10 +34,28 @@ maven_repos = {
 # e.g.:
 #   'androidx.appcompat:appcompat:latest:aar': {'repo': 'gmaven'}
 maven_artifacts = {
+    # CameraX
+    'androidx.camera:camera-camera2:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-core:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-extensions:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-lifecycle:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-view:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-video:latest:aar': {'repo': 'gmaven'},
 }
 
 # Mapping of POM dependencies to Soong build targets
 dependencies_rewrite = {
+    'androidx.annotation:annotation': 'androidx.annotation_annotation',
+    'androidx.annotation:annotation-experimental': 'androidx.annotation_annotation-experimental',
+    'androidx.appcompat:appcompat': 'androidx.appcompat_appcompat',
+    'androidx.concurrent:concurrent-futures': 'androidx.concurrent_concurrent-futures',
+    'androidx.core:core': 'androidx.core_core',
+    'androidx.exifinterface:exifinterface': 'androidx.exifinterface_exifinterface',
+    'androidx.lifecycle:lifecycle-common': 'androidx.lifecycle_lifecycle-common',
+    'androidx.lifecycle:lifecycle-livedata': 'androidx.lifecycle_lifecycle-livedata',
+    'auto-value-annotations': 'auto_value_annotations',
+    'com.google.guava:listenablefuture':'guava-listenablefuture-prebuilt-jar',
+    'org.jetbrains.kotlin:kotlin-stdlib-common':'kotlin-stdlib',
 }
 
 def name_for_artifact(group_artifact):

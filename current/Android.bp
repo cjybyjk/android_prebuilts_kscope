@@ -1,0 +1,256 @@
+// Automatically generated with:
+// pom2bp -sdk-version 31 -default-min-sdk-version 24 -static-deps '-rewrite=^androidx.camera:camera-camera2$=androidx.camera_camera-camera2' '-rewrite=^androidx.camera:camera-core$=androidx.camera_camera-core' '-rewrite=^androidx.camera:camera-extensions$=androidx.camera_camera-extensions' '-rewrite=^androidx.camera:camera-lifecycle$=androidx.camera_camera-lifecycle' '-rewrite=^androidx.camera:camera-video$=androidx.camera_camera-video' '-rewrite=^androidx.camera:camera-view$=androidx.camera_camera-view' '-rewrite=^androidx.annotation:annotation$=androidx.annotation_annotation' '-rewrite=^androidx.annotation:annotation-experimental$=androidx.annotation_annotation-experimental' '-rewrite=^androidx.appcompat:appcompat$=androidx.appcompat_appcompat' '-rewrite=^androidx.concurrent:concurrent-futures$=androidx.concurrent_concurrent-futures' '-rewrite=^androidx.core:core$=androidx.core_core' '-rewrite=^androidx.exifinterface:exifinterface$=androidx.exifinterface_exifinterface' '-rewrite=^androidx.lifecycle:lifecycle-common$=androidx.lifecycle_lifecycle-common' '-rewrite=^androidx.lifecycle:lifecycle-livedata$=androidx.lifecycle_lifecycle-livedata' '-rewrite=^auto-value-annotations$=auto_value_annotations' '-rewrite=^com.google.guava:listenablefuture$=guava-listenablefuture-prebuilt-jar' '-rewrite=^org.jetbrains.kotlin:kotlin-stdlib-common$=kotlin-stdlib' -exclude=android-arch-room-migration -exclude=android-arch-room-testing .
+
+android_library_import {
+    name: "androidx.camera_camera-camera2-nodeps",
+    aars: ["androidx.camera/camera-camera2/1.2.0-alpha03/camera-camera2-1.2.0-alpha03.aar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    static_libs: [
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+}
+
+android_library {
+    name: "androidx.camera_camera-camera2",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    manifest: "manifests/androidx.camera_camera-camera2/AndroidManifest.xml",
+    static_libs: [
+        "androidx.camera_camera-camera2-nodeps",
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+    java_version: "1.7",
+}
+
+android_library_import {
+    name: "androidx.camera_camera-core-nodeps",
+    aars: ["androidx.camera/camera-core/1.2.0-alpha03/camera-core-1.2.0-alpha03.aar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    static_libs: [
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "androidx.lifecycle_lifecycle-common",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "kotlin-stdlib",
+        "androidx.annotation_annotation-experimental",
+        "androidx.core_core",
+        "androidx.exifinterface_exifinterface",
+        "androidx.lifecycle_lifecycle-livedata",
+    ],
+}
+
+android_library {
+    name: "androidx.camera_camera-core",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    manifest: "manifests/androidx.camera_camera-core/AndroidManifest.xml",
+    static_libs: [
+        "androidx.camera_camera-core-nodeps",
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "androidx.lifecycle_lifecycle-common",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "kotlin-stdlib",
+        "androidx.annotation_annotation-experimental",
+        "androidx.core_core",
+        "androidx.exifinterface_exifinterface",
+        "androidx.lifecycle_lifecycle-livedata",
+    ],
+    java_version: "1.7",
+}
+
+android_library_import {
+    name: "androidx.camera_camera-extensions-nodeps",
+    aars: ["androidx.camera/camera-extensions/1.2.0-alpha03/camera-extensions-1.2.0-alpha03.aar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    static_libs: [
+        "androidx.concurrent_concurrent-futures",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.camera_camera-camera2",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+}
+
+android_library {
+    name: "androidx.camera_camera-extensions",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    manifest: "manifests/androidx.camera_camera-extensions/AndroidManifest.xml",
+    static_libs: [
+        "androidx.camera_camera-extensions-nodeps",
+        "androidx.concurrent_concurrent-futures",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.camera_camera-camera2",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+    java_version: "1.7",
+}
+
+android_library_import {
+    name: "androidx.camera_camera-lifecycle-nodeps",
+    aars: ["androidx.camera/camera-lifecycle/1.2.0-alpha03/camera-lifecycle-1.2.0-alpha03.aar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    static_libs: [
+        "androidx.concurrent_concurrent-futures",
+        "androidx.lifecycle_lifecycle-common",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+}
+
+android_library {
+    name: "androidx.camera_camera-lifecycle",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    manifest: "manifests/androidx.camera_camera-lifecycle/AndroidManifest.xml",
+    static_libs: [
+        "androidx.camera_camera-lifecycle-nodeps",
+        "androidx.concurrent_concurrent-futures",
+        "androidx.lifecycle_lifecycle-common",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+    java_version: "1.7",
+}
+
+android_library_import {
+    name: "androidx.camera_camera-video-nodeps",
+    aars: ["androidx.camera/camera-video/1.2.0-alpha03/camera-video-1.2.0-alpha03.aar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    static_libs: [
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "auto_value_annotations",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+}
+
+android_library {
+    name: "androidx.camera_camera-video",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    manifest: "manifests/androidx.camera_camera-video/AndroidManifest.xml",
+    static_libs: [
+        "androidx.camera_camera-video-nodeps",
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "auto_value_annotations",
+        "androidx.camera_camera-core",
+        "androidx.core_core",
+    ],
+    java_version: "1.7",
+}
+
+android_library_import {
+    name: "androidx.camera_camera-view-nodeps",
+    aars: ["androidx.camera/camera-view/1.2.0-alpha03/camera-view-1.2.0-alpha03.aar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    static_libs: [
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "androidx.lifecycle_lifecycle-common",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.annotation_annotation-experimental",
+        "androidx.appcompat_appcompat",
+        "androidx.camera_camera-core",
+        "androidx.camera_camera-lifecycle",
+        "androidx.core_core",
+    ],
+}
+
+android_library {
+    name: "androidx.camera_camera-view",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "14",
+    manifest: "manifests/androidx.camera_camera-view/AndroidManifest.xml",
+    static_libs: [
+        "androidx.camera_camera-view-nodeps",
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "androidx.lifecycle_lifecycle-common",
+        "auto_value_annotations",
+        "guava-listenablefuture-prebuilt-jar",
+        "androidx.annotation_annotation-experimental",
+        "androidx.appcompat_appcompat",
+        "androidx.camera_camera-core",
+        "androidx.camera_camera-lifecycle",
+        "androidx.core_core",
+    ],
+    java_version: "1.7",
+}
