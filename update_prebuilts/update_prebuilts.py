@@ -46,6 +46,9 @@ maven_artifacts = {
 
     # zxing
     'com.google.zxing:core:latest:jar': {'repo': 'maven'},
+
+    # databinding
+    'androidx.databinding:viewbinding:7.2.1:aar': {'repo': 'gmaven'}
 }
 
 # Mapping of POM dependencies to Soong build targets
