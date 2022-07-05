@@ -106,6 +106,23 @@ def mv(src_path, dst_path):
         move(f, dst)
 
 
+def read_pom_file(path):
+    # Read the POM (hack hack hack).
+    group_id = ''
+    artifact_id = ''
+    version = ''
+    with open(path) as pom_file:
+        for line in pom_file:
+            if line[:11] == '  <groupId>':
+                group_id = line[11:-11]
+            elif line[:14] == '  <artifactId>':
+                artifact_id = line[14:-14]
+            elif line[:11] == '  <version>':
+                version = line[11:-11]
+
+    return group_id, artifact_id, version
+
+
 def detect_artifacts(maven_repo_dirs):
     maven_lib_info = {}
 
@@ -114,19 +131,8 @@ def detect_artifacts(maven_repo_dirs):
         for root, dirs, files in os.walk(repo_dir):
             for file in files:
                 if file[-4:] == ".pom":
-                    # Read the POM (hack hack hack).
-                    group_id = ''
-                    artifact_id = ''
-                    version = ''
                     file = os.path.join(root, file)
-                    with open(file) as pom_file:
-                        for line in pom_file:
-                            if line[:11] == '  <groupId>':
-                                group_id = line[11:-11]
-                            elif line[:14] == '  <artifactId>':
-                                artifact_id = line[14:-14]
-                            elif line[:11] == '  <version>':
-                                version = line[11:-11]
+                    group_id, artifact_id, version = read_pom_file(file)
                     if group_id == '' or artifact_id == '' or version == '':
                         print_e('Failed to find Maven artifact data in ' + file)
                         continue
@@ -306,6 +312,21 @@ class MavenArtifact(object):
         return latest_version
 
 
+def hack_pom_file(path, group_id):
+    artifact_id_index = 0
+    lines = []
+    with open(path, 'r') as f:
+        for line in f:
+            if line.startswith('  <artifactId>'):
+                lines.append(f'  <groupId>{group_id}</groupId>\n')
+            elif line.startswith('  <groupId>'):
+                continue
+            lines.append(line)
+
+    with open(path, 'w') as f:
+        f.writelines(lines)
+
+
 def fetch_maven_artifact(artifact):
     """Fetch a Maven artifact.
 
@@ -314,8 +335,14 @@ def fetch_maven_artifact(artifact):
     """
     download_to = os.path.join(artifact.repo_id, artifact.group, artifact.library, artifact.version)
 
-    _DownloadFileToDisk(artifact.get_pom_file_url(), os.path.join(download_to, f'{artifact.library}-{artifact.version}.pom'))
+    pom_file_path = os.path.join(download_to, f'{artifact.library}-{artifact.version}.pom')
+    _DownloadFileToDisk(artifact.get_pom_file_url(), pom_file_path)
     _DownloadFileToDisk(artifact.get_artifact_url(), os.path.join(download_to, f'{artifact.library}-{artifact.version}.{artifact.ext}'))
+
+    group, library, version = read_pom_file(pom_file_path)
+
+    if group != artifact.group:
+        hack_pom_file(pom_file_path, artifact.group)
 
     return download_to
 
