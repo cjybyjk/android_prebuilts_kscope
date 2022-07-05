@@ -7,6 +7,8 @@ from shutil import rmtree, which, move
 from distutils.version import LooseVersion
 import six
 import urllib.request, urllib.parse, urllib.error
+from sdk_prebuilts import maven_to_make as sdk_maven_to_make
+from sdk_prebuilts import deps_rewrite as sdk_deps_rewrite
 
 # Some code was kanged from `/prebuilts/sdk/update_prebuilts/update_prebuilts.py`
 
@@ -48,17 +50,6 @@ maven_artifacts = {
 
 # Mapping of POM dependencies to Soong build targets
 dependencies_rewrite = {
-    'androidx.annotation:annotation': 'androidx.annotation_annotation',
-    'androidx.annotation:annotation-experimental': 'androidx.annotation_annotation-experimental',
-    'androidx.appcompat:appcompat': 'androidx.appcompat_appcompat',
-    'androidx.concurrent:concurrent-futures': 'androidx.concurrent_concurrent-futures',
-    'androidx.core:core': 'androidx.core_core',
-    'androidx.exifinterface:exifinterface': 'androidx.exifinterface_exifinterface',
-    'androidx.lifecycle:lifecycle-common': 'androidx.lifecycle_lifecycle-common',
-    'androidx.lifecycle:lifecycle-livedata': 'androidx.lifecycle_lifecycle-livedata',
-    'auto-value-annotations': 'auto_value_annotations',
-    'com.google.guava:listenablefuture':'guava-listenablefuture-prebuilt-jar',
-    'org.jetbrains.kotlin:kotlin-stdlib-common':'kotlin-stdlib',
 }
 
 def name_for_artifact(group_artifact):
@@ -80,6 +71,14 @@ for key in maven_to_make:
         maven_to_make[key]['name'] = name_for_artifact(key)
     if ('path' not in maven_to_make[key]):
         maven_to_make[key]['path'] = path_for_artifact(key)
+
+# Add dependencies rewrite rules from AOSP
+sdk_deps_rewrite.update(dependencies_rewrite)
+dependencies_rewrite = sdk_deps_rewrite
+
+for key, val in sdk_maven_to_make.items():
+    if key not in dependencies_rewrite:
+        dependencies_rewrite[key] = name_for_artifact(key) if 'name' not in val else val['name']
 
 # Always remove these files.
 blacklist_files = [
