@@ -1,5 +1,5 @@
 // Automatically generated with:
-// pom2bp -sdk-version 31 -default-min-sdk-version 24 -static-deps '-rewrite=^androidx.camera:camera-camera2$=androidx.camera_camera-camera2' '-rewrite=^androidx.camera:camera-core$=androidx.camera_camera-core' '-rewrite=^androidx.camera:camera-extensions$=androidx.camera_camera-extensions' '-rewrite=^androidx.camera:camera-lifecycle$=androidx.camera_camera-lifecycle' '-rewrite=^androidx.camera:camera-video$=androidx.camera_camera-video' '-rewrite=^androidx.camera:camera-view$=androidx.camera_camera-view' '-rewrite=^androidx.annotation:annotation$=androidx.annotation_annotation' '-rewrite=^androidx.annotation:annotation-experimental$=androidx.annotation_annotation-experimental' '-rewrite=^androidx.appcompat:appcompat$=androidx.appcompat_appcompat' '-rewrite=^androidx.concurrent:concurrent-futures$=androidx.concurrent_concurrent-futures' '-rewrite=^androidx.core:core$=androidx.core_core' '-rewrite=^androidx.exifinterface:exifinterface$=androidx.exifinterface_exifinterface' '-rewrite=^androidx.lifecycle:lifecycle-common$=androidx.lifecycle_lifecycle-common' '-rewrite=^androidx.lifecycle:lifecycle-livedata$=androidx.lifecycle_lifecycle-livedata' '-rewrite=^auto-value-annotations$=auto_value_annotations' '-rewrite=^com.google.guava:listenablefuture$=guava-listenablefuture-prebuilt-jar' '-rewrite=^org.jetbrains.kotlin:kotlin-stdlib-common$=kotlin-stdlib' -exclude=android-arch-room-migration -exclude=android-arch-room-testing .
+// pom2bp -sdk-version 31 -default-min-sdk-version 24 -static-deps '-rewrite=^androidx.camera:camera-camera2$=androidx.camera_camera-camera2' '-rewrite=^androidx.camera:camera-core$=androidx.camera_camera-core' '-rewrite=^androidx.camera:camera-extensions$=androidx.camera_camera-extensions' '-rewrite=^androidx.camera:camera-lifecycle$=androidx.camera_camera-lifecycle' '-rewrite=^androidx.camera:camera-video$=androidx.camera_camera-video' '-rewrite=^androidx.camera:camera-view$=androidx.camera_camera-view' '-rewrite=^com.google.zxing:core$=com.google.zxing_core' '-rewrite=^androidx.annotation:annotation$=androidx.annotation_annotation' '-rewrite=^androidx.annotation:annotation-experimental$=androidx.annotation_annotation-experimental' '-rewrite=^androidx.appcompat:appcompat$=androidx.appcompat_appcompat' '-rewrite=^androidx.concurrent:concurrent-futures$=androidx.concurrent_concurrent-futures' '-rewrite=^androidx.core:core$=androidx.core_core' '-rewrite=^androidx.exifinterface:exifinterface$=androidx.exifinterface_exifinterface' '-rewrite=^androidx.lifecycle:lifecycle-common$=androidx.lifecycle_lifecycle-common' '-rewrite=^androidx.lifecycle:lifecycle-livedata$=androidx.lifecycle_lifecycle-livedata' '-rewrite=^auto-value-annotations$=auto_value_annotations' '-rewrite=^com.google.guava:listenablefuture$=guava-listenablefuture-prebuilt-jar' '-rewrite=^org.jetbrains.kotlin:kotlin-stdlib-common$=kotlin-stdlib' -exclude=android-arch-room-migration -exclude=android-arch-room-testing .
 
 android_library_import {
     name: "androidx.camera_camera-camera2-nodeps",
@@ -251,6 +251,31 @@ android_library {
         "androidx.camera_camera-core",
         "androidx.camera_camera-lifecycle",
         "androidx.core_core",
+    ],
+    java_version: "1.7",
+}
+
+java_import {
+    name: "com.google.zxing_core-nodeps",
+    jars: ["com.google.zxing/core/3.5.0/core-3.5.0.jar"],
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "24",
+}
+
+java_library_static {
+    name: "com.google.zxing_core",
+    sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+    min_sdk_version: "24",
+    static_libs: [
+        "com.google.zxing_core-nodeps",
     ],
     java_version: "1.7",
 }

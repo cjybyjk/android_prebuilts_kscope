@@ -41,6 +41,9 @@ maven_artifacts = {
     'androidx.camera:camera-lifecycle:latest:aar': {'repo': 'gmaven'},
     'androidx.camera:camera-view:latest:aar': {'repo': 'gmaven'},
     'androidx.camera:camera-video:latest:aar': {'repo': 'gmaven'},
+
+    # zxing
+    'com.google.zxing:core:latest:jar': {'repo': 'maven'},
 }
 
 # Mapping of POM dependencies to Soong build targets
