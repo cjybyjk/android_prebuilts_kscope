@@ -51,7 +51,7 @@ maven_artifacts = {
     'androidx.databinding:viewbinding:7.2.1:aar': {'repo': 'gmaven'},
     
     # material 3
-    'com.google.android.material:material:1.6.1:aar': {'repo': 'gmaven', 'name': 'com.google.android.material_material_ksope'}
+    'com.google.android.material:material:1.6.1:aar': {'repo': 'gmaven', 'name': 'com.google.android.material_material_kscope'}
 }
 
 # Mapping of POM dependencies to Soong build targets
