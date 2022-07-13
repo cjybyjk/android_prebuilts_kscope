@@ -37,12 +37,12 @@ maven_repos = {
 #   'androidx.appcompat:appcompat:latest:aar': {'repo': 'gmaven'}
 maven_artifacts = {
     # CameraX
-    'androidx.camera:camera-camera2:1.2.0-alpha02:aar': {'repo': 'gmaven'},
-    'androidx.camera:camera-core:1.2.0-alpha02:aar': {'repo': 'gmaven'},
-    'androidx.camera:camera-extensions:1.2.0-alpha02:aar': {'repo': 'gmaven'},
-    'androidx.camera:camera-lifecycle:1.2.0-alpha02:aar': {'repo': 'gmaven'},
-    'androidx.camera:camera-view:1.2.0-alpha02:aar': {'repo': 'gmaven'},
-    'androidx.camera:camera-video:1.2.0-alpha02:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-camera2:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-core:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-extensions:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-lifecycle:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-view:latest:aar': {'repo': 'gmaven'},
+    'androidx.camera:camera-video:latest:aar': {'repo': 'gmaven'},
 
     # zxing
     'com.google.zxing:core:latest:jar': {'repo': 'maven'},
